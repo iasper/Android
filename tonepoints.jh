@@ -1,0 +1,36 @@
+entity User {
+	Name String,
+    Email String
+}
+
+entity Settings {
+	weekly_goal Integer required min(10) max(21),
+    weight_units Units required
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Points	{
+	date LocalDate required,
+    exercise Integer,
+    meals Integer,
+    alcohol Integer,
+    notes String maxlength(140)
+}
+entity Weight {
+	weekly_goal Integer,
+    weight_units Units
+}
+entity Blood_Pressure {
+	date LocalDate required,
+    systolic Integer,
+    diastolic Integer
+}
+relationship ManyToOne{
+	Points to User
+    Weight to User
+    Blood_Pressure to User 
+}
+relationship OneToOne {
+	Settings to User
+}
